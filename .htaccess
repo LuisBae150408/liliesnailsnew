@@ -1,0 +1,19 @@
+# .htaccess raíz
+# Solo es necesario si tu hosting NO te permite configurar /public como
+# "document root" del dominio. En ese caso, este archivo redirige
+# automáticamente todo el tráfico hacia la carpeta /public.
+#
+# Si tu hosting SÍ permite elegir /public como raíz pública (recomendado,
+# por ejemplo en Aiven + una VPS/Render/Railway con Apache o Nginx propio),
+# puedes ignorar o borrar este archivo.
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{REQUEST_URI} !^/public/
+  RewriteRule ^(.*)$ /public/$1 [L]
+</IfModule>
+
+# Nunca servir archivos sensibles si por error quedan accesibles
+<FilesMatch "\.(env|sql|md)$">
+  Require all denied
+</FilesMatch>

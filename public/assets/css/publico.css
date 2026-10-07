@@ -1,0 +1,428 @@
+/* =====================================================================
+   publico.css — Sitio público de LiliesNails
+   Firma visual: la silueta del lirio del logo como marca de agua,
+   y tarjetas con una esquina "pétalo" (radio asimétrico) como único
+   acento decorativo recurrente.
+   ===================================================================== */
+
+body.publico { padding-bottom: 10px; }
+
+/* ---------- Barra superior simple ---------- */
+.barra-publica {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  background: var(--blanco);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  box-shadow: 0 2px 10px rgba(193, 34, 240, 0.06);
+}
+.barra-publica .marca { display: flex; align-items: center; gap: 10px; }
+.barra-publica img { height: 32px; }
+.barra-publica span {
+  font-family: var(--fuente-display);
+  font-weight: 800;
+  color: var(--lila-primario);
+  text-transform: uppercase;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+}
+.barra-publica a.btn { font-size: 0.72rem; padding: 10px 16px; }
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 56px 20px 64px;
+  text-align: center;
+  background: linear-gradient(180deg, var(--lila-claro) 0%, var(--fondo-general) 100%);
+}
+
+/* Dos siluetas de flores extra (distintas entre sí y distintas al lirio
+   del logo), para acompañar los dos lirios que ya había en las esquinas
+   opuestas — así no se repite la misma flor por todos lados. */
+.hero::before,
+.hero::after {
+  content: '';
+  position: absolute;
+  width: 170px;
+  height: 170px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.22;
+  pointer-events: none;
+  z-index: 0;
+}
+.hero::before {
+  top: -20px;
+  left: -35px;
+  transform: rotate(-12deg);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg fill='none' stroke='%23c122f0' stroke-width='1.6'%3E%3Cellipse cx='50' cy='22' rx='5' ry='17' transform='rotate(0 50 50)'/%3E%3Cellipse cx='50' cy='22' rx='5' ry='17' transform='rotate(60 50 50)'/%3E%3Cellipse cx='50' cy='22' rx='5' ry='17' transform='rotate(120 50 50)'/%3E%3Cellipse cx='50' cy='22' rx='5' ry='17' transform='rotate(180 50 50)'/%3E%3Cellipse cx='50' cy='22' rx='5' ry='17' transform='rotate(240 50 50)'/%3E%3Cellipse cx='50' cy='22' rx='5' ry='17' transform='rotate(300 50 50)'/%3E%3Ccircle cx='50' cy='50' r='5'/%3E%3C/g%3E%3C/svg%3E");
+}
+.hero::after {
+  bottom: -15px;
+  right: -25px;
+  transform: rotate(15deg);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg fill='none' stroke='%238b19ad' stroke-width='1.6'%3E%3Cpath d='M50 50 Q42 30 50 10 Q58 30 50 50 Z'/%3E%3Cpath d='M50 50 Q42 30 50 10 Q58 30 50 50 Z' transform='rotate(72 50 50)'/%3E%3Cpath d='M50 50 Q42 30 50 10 Q58 30 50 50 Z' transform='rotate(144 50 50)'/%3E%3Cpath d='M50 50 Q42 30 50 10 Q58 30 50 50 Z' transform='rotate(216 50 50)'/%3E%3Cpath d='M50 50 Q42 30 50 10 Q58 30 50 50 Z' transform='rotate(288 50 50)'/%3E%3Ccircle cx='50' cy='50' r='4'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.hero .marca-agua {
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 260px;
+  height: 260px;
+  opacity: 0.16;
+  transform: rotate(18deg);
+  pointer-events: none;
+  z-index: 1;
+}
+.hero .marca-agua.izq {
+  right: auto;
+  left: -80px;
+  top: auto;
+  bottom: -90px;
+  transform: rotate(-25deg);
+  width: 220px;
+  height: 220px;
+}
+
+.hero-contenido { position: relative; z-index: 2; max-width: 480px; margin: 0 auto; }
+.hero img.logo-hero {
+  height: 84px;
+  margin: 0 auto 18px;
+  filter: drop-shadow(0 8px 20px rgba(193, 34, 240, 0.18));
+}
+.hero h1 { font-size: 1.6rem; margin-bottom: 10px; }
+.hero p.tagline { color: var(--texto-mas-suave); font-size: 1rem; margin-bottom: 26px; }
+.hero .acciones-hero { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+@media (max-width: 480px) {
+  .hero::before, .hero::after { width: 110px; height: 110px; }
+}
+.hero .btn-secundario {
+  background-color: rgba(255, 255, 255, 0.85);
+  border: none;
+  color: var(--lila-oscuro);
+}
+.hero .btn-secundario:hover { background-color: var(--blanco); }
+
+@media (max-width: 480px) {
+  .hero::before { width: 260px; height: 260px; top: -100px; left: -80px; }
+  .hero::after { width: 220px; height: 220px; bottom: -110px; right: -60px; }
+}
+
+/* ---------- Secciones públicas ---------- */
+.seccion-publica { padding: 46px 20px; max-width: 1080px; margin: 0 auto; }
+.seccion-publica .titulo-seccion { text-align: center; margin-bottom: 8px; }
+.seccion-publica .subtitulo-seccion {
+  text-align: center;
+  color: var(--texto-tenue);
+  font-size: 0.92rem;
+  margin-bottom: 30px;
+}
+
+/* ---------- Catálogo de servicios ---------- */
+.grid-servicios {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.tarjeta-servicio {
+  background: var(--blanco);
+  border-radius: 22px 22px 22px 6px; /* esquina "pétalo" — firma visual */
+  overflow: hidden;
+  box-shadow: var(--sombra-suave);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  display: flex;
+  flex-direction: column;
+}
+.tarjeta-servicio:hover { transform: translateY(-4px); box-shadow: var(--sombra-media); }
+
+.tarjeta-servicio .foto {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: var(--lila-claro);
+}
+.tarjeta-servicio .foto.marcador {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--lila-pastel);
+  font-size: 2.2rem;
+}
+
+.tarjeta-servicio .cuerpo { padding: 16px 18px 18px; flex: 1; display: flex; flex-direction: column; }
+.tarjeta-servicio h3 { font-size: 1rem; margin-bottom: 6px; }
+.tarjeta-servicio p { font-size: 0.85rem; color: var(--texto-tenue); flex: 1; margin-bottom: 12px; }
+.tarjeta-servicio .precio {
+  font-family: var(--fuente-display);
+  font-weight: 800;
+  color: var(--lila-primario);
+  font-size: 1.15rem;
+}
+.tarjeta-servicio .precio span { font-size: 0.7rem; color: var(--texto-tenue); font-weight: 500; }
+
+/* ---------- Galería de diseños ---------- */
+.grid-galeria {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+@media (min-width: 560px) {
+  .grid-galeria { grid-template-columns: repeat(3, 1fr); }
+}
+.grid-galeria figure {
+  margin: 0;
+  border-radius: var(--radio-m);
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 1;
+  background: var(--lila-claro);
+}
+.grid-galeria img { width: 100%; height: 100%; object-fit: cover; }
+.grid-galeria figcaption {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 8px 10px;
+  background: linear-gradient(0deg, rgba(51,51,51,0.65), transparent);
+  color: var(--blanco);
+  font-size: 0.72rem;
+}
+
+/* ---------- Contacto / footer ---------- */
+.footer-publico {
+  background: var(--blanco);
+  padding: 40px 20px 30px;
+  text-align: center;
+  border-top: 1px solid var(--lila-borde);
+}
+.footer-publico .info-contacto {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  color: var(--texto-mas-suave);
+  font-size: 0.9rem;
+  margin-bottom: 18px;
+}
+.footer-publico .info-contacto i { color: var(--lila-primario); margin-right: 6px; }
+.footer-publico .redes { display: flex; gap: 14px; justify-content: center; margin-bottom: 16px; }
+.footer-publico .redes a {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--lila-claro);
+  color: var(--lila-primario);
+  display: flex; align-items: center; justify-content: center;
+  text-decoration: none;
+}
+.footer-publico small { color: var(--texto-tenue); font-size: 0.75rem; }
+.acceso-discreto {
+  color: var(--lila-pastel);
+  text-decoration: none;
+  margin-right: 6px;
+  font-size: 0.7rem;
+  opacity: 0.6;
+}
+.acceso-discreto:hover { opacity: 1; }
+
+/* ---------- Botón flotante de WhatsApp ---------- */
+.flotante-whatsapp {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--exito);
+  color: var(--blanco);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  box-shadow: 0 6px 18px rgba(46, 204, 113, 0.4);
+  text-decoration: none;
+  z-index: 40;
+}
+
+/* =====================================================================
+   Carrusel inmersivo de galería (ambient blur / glassmorphism)
+   ===================================================================== */
+.carrusel-galeria {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 60px 0 70px;
+  isolation: isolate;
+}
+
+.fondo-carrusel-capa {
+  position: absolute;
+  inset: -20px; /* margen extra para que el blur no deje bordes duros */
+  background-size: cover;
+  background-position: center;
+  filter: blur(25px);
+  transform: scale(1.15);
+  opacity: 0;
+  transition: opacity 0.6s ease-in-out;
+  z-index: 0;
+}
+.fondo-carrusel-capa.activa { opacity: 1; }
+
+.overlay-carrusel {
+  position: absolute;
+  inset: 0;
+  background: rgba(139, 25, 173, 0.45); /* lila-oscuro de marca, translúcido */
+  z-index: 1;
+}
+
+.contenido-carrusel {
+  position: relative;
+  z-index: 2;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.titulo-seccion-carrusel {
+  text-align: center;
+  color: var(--blanco);
+  margin-bottom: 4px;
+}
+.subtitulo-seccion-carrusel {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.92rem;
+  margin-bottom: 30px;
+}
+
+.marco-carrusel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pista-carrusel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  border-radius: var(--radio-l);
+  flex: 1;
+}
+.pista-carrusel::-webkit-scrollbar { display: none; }
+
+.slide-carrusel {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(6px);
+  border-radius: var(--radio-l);
+  padding: 40px;
+  min-height: 320px;
+  box-sizing: border-box;
+}
+
+.slide-texto { flex: 1; min-width: 0; }
+.slide-texto h3 {
+  font-family: var(--fuente-display);
+  font-weight: 700;
+  font-size: 1.7rem;
+  color: var(--lila-primario);
+  margin-bottom: 14px;
+  line-height: 1.25;
+}
+.slide-texto p {
+  font-family: var(--fuente-cuerpo);
+  font-weight: 400;
+  font-size: 0.95rem;
+  color: var(--texto-mas-suave);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.slide-imagen { flex: 1; min-width: 0; }
+.slide-imagen img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radio-l);
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.28);
+  display: block;
+}
+
+.flecha-carrusel {
+  flex-shrink: 0;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: none;
+  background: var(--blanco);
+  color: var(--lila-oscuro);
+  box-shadow: var(--sombra-media);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.05rem;
+  transition: transform 0.2s ease;
+  z-index: 3;
+}
+.flecha-carrusel:hover { transform: scale(1.08); }
+.flecha-carrusel:active { transform: scale(0.96); }
+
+.dots-carrusel {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 22px;
+}
+.dots-carrusel .dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.dots-carrusel .dot.activo {
+  background: var(--blanco);
+  width: 26px;
+  border-radius: 5px;
+}
+
+@media (max-width: 760px) {
+  .carrusel-galeria { padding: 44px 0 54px; }
+  .slide-carrusel {
+    flex-direction: column-reverse; /* imagen arriba, texto abajo */
+    gap: 18px;
+    padding: 22px;
+    min-height: 0;
+  }
+  .slide-texto h3 { font-size: 1.3rem; text-align: center; }
+  .slide-texto p { text-align: center; font-size: 0.88rem; }
+  .slide-imagen img { aspect-ratio: 4 / 3; }
+  .flecha-carrusel { width: 38px; height: 38px; font-size: 0.9rem; }
+}
+
+@media (max-width: 480px) {
+  .flecha-carrusel.izq { position: absolute; left: 4px; top: 42%; }
+  .flecha-carrusel.der { position: absolute; right: 4px; top: 42%; }
+  .marco-carrusel { padding: 0 4px; }
+}
+
+@media (max-width: 480px) {
+  .hero { padding: 44px 16px 52px; }
+  .seccion-publica { padding: 34px 16px; }
+}

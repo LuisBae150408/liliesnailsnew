@@ -1,0 +1,35 @@
+# .htaccess de /public (raíz pública del sitio)
+
+Options -Indexes
+DirectoryIndex index.php
+
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# El manifest y los service workers deben poder cachearse poco tiempo
+# para que las actualizaciones lleguen rápido a los celulares. Este
+# bloque va DESPUÉS del genérico de abajo a propósito: cuando dos
+# reglas de Cache-Control coinciden en el mismo archivo, gana la que
+# esté más abajo — así el "no-cache" de estos 3 archivos siempre le
+# gana a la regla general de 7 días para .js/.css.
+<IfModule mod_headers.c>
+  <FilesMatch "\.(css|js|png|jpg|jpeg|webp|svg|woff2?)$">
+    Header set Cache-Control "public, max-age=604800"
+  </FilesMatch>
+  <FilesMatch "(manifest(-admin)?\.json|sw\.js|OneSignalSDKWorker\.js)$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+</IfModule>
+
+# Comprime HTML/CSS/JS/JSON/SVG antes de enviarlos (si el hosting lo
+# permite): mismo contenido, menos bytes por la red, carga más rápida
+# sobre todo en datos móviles. No hace nada si el módulo no existe.
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml
+  AddOutputFilterByType DEFLATE application/javascript application/x-javascript
+  AddOutputFilterByType DEFLATE application/json application/xml application/rss+xml
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>

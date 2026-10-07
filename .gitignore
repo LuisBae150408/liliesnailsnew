@@ -1,0 +1,15 @@
+# Variables de entorno y secretos — NUNCA subir esto
+.env
+config/certs/*.pem
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Editores
+.vscode/
+.idea/
+
+# Dependencias (si en el futuro agregas Composer)
+vendor/
+composer.lock

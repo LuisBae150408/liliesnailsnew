@@ -1,0 +1,282 @@
+/* =====================================================================
+   estilos.css — Tokens de diseño y base compartida
+   Paleta = la de la marca LiliesNails original, sin colores nuevos.
+   ===================================================================== */
+
+:root {
+  /* Lilas de marca (tono de la referencia del logo; el fondo pastel se mantiene igual) */
+  --lila-primario: #c122f0;
+  --lila-oscuro: #8b19ad;
+  --lila-claro: #f3ecfb;
+  --lila-pastel: #ddc9f2;
+  --lila-borde: #e6d9f7;
+  --lila-input-fondo: #f1e6fb;
+  --lila-check-fondo: #faf5fd;
+  --lila-texto-fuerte: #5c1073;
+  --fondo-general: #faf5fd;
+  --blanco: #ffffff;
+
+  /* Texto */
+  --texto: #333333;
+  --texto-suave: #444444;
+  --texto-mas-suave: #555555;
+  --texto-tenue: #7a8ba3;
+
+  /* Utilidad (igual que en la app original) */
+  --exito: #2ecc71;
+  --morado: #9b59b6;
+  --peligro-fondo: #ffcdd2;
+  --peligro-texto: #c62828;
+  --peligro-hover: #ef9a9a;
+
+  /* Estados de citas (agenda) */
+  --estado-pendiente: #f5a623;
+  --estado-pendiente-fondo: #fff3e0;
+  --estado-confirmada: #c122f0;
+  --estado-confirmada-fondo: #f3ecfb;
+  --estado-completada: #2ecc71;
+  --estado-completada-fondo: #e8f8ee;
+  --estado-cancelada: #c62828;
+  --estado-cancelada-fondo: #ffebee;
+
+  /* Tipografía */
+  --fuente-display: "Montserrat", sans-serif;
+  --fuente-botones: "Nunito", sans-serif;
+  --fuente-cuerpo: "Quicksand", sans-serif;
+
+  /* Radios: el lenguaje visual redondeado es parte de la identidad */
+  --radio-s: 10px;
+  --radio-m: 16px;
+  --radio-l: 24px;
+  --radio-pill: 999px;
+
+  --sombra-suave: 0 4px 14px rgba(193, 34, 240, 0.12);
+  --sombra-media: 0 6px 20px rgba(193, 34, 240, 0.20);
+
+  /* Altura reservada para la barra de navegación inferior (móvil) */
+  --alto-nav-inferior: 64px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--fuente-cuerpo);
+  background-color: var(--fondo-general);
+  color: var(--texto);
+  line-height: 1.6;
+  -webkit-tap-highlight-color: transparent;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--fuente-display);
+  color: var(--lila-primario);
+  margin: 0 0 0.5em;
+}
+
+h1 { font-weight: 800; letter-spacing: 0.5px; }
+h2 { font-weight: 800; letter-spacing: 0.5px; }
+
+a { color: var(--lila-primario); }
+
+p { margin: 0 0 1em; color: var(--texto-mas-suave); }
+
+img { max-width: 100%; display: block; }
+
+/* ---------- Botones ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: var(--lila-primario);
+  color: var(--blanco);
+  border: none;
+  cursor: pointer;
+  font-family: var(--fuente-botones);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.85rem;
+  padding: 13px 24px;
+  border-radius: var(--radio-pill);
+  transition: transform 0.2s ease, background-color 0.2s ease, filter 0.2s ease;
+  text-decoration: none;
+}
+
+.btn:hover { background-color: var(--lila-oscuro); transform: translateY(-2px); }
+.btn:active { transform: translateY(0); }
+
+.btn-secundario {
+  background-color: var(--lila-claro);
+  color: var(--lila-primario);
+}
+.btn-secundario:hover { background-color: var(--lila-pastel); }
+
+.btn-peligro { background-color: var(--peligro-fondo); color: var(--peligro-texto); }
+.btn-peligro:hover { background-color: var(--peligro-hover); }
+
+.btn-exito { background-color: var(--exito); color: var(--blanco); }
+.btn-morado { background-color: var(--morado); color: var(--blanco); }
+
+.btn-icono {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: var(--radio-s);
+}
+
+.btn-bloque { width: 100%; }
+
+.btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+/* ---------- Formularios ---------- */
+label {
+  font-weight: 600;
+  color: var(--texto-mas-suave);
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="password"],
+input[type="tel"],
+input[type="date"],
+input[type="time"],
+select,
+textarea {
+  width: 100%;
+  border: 2px solid var(--lila-borde);
+  border-radius: var(--radio-s);
+  padding: 12px 14px;
+  outline: none;
+  font-family: var(--fuente-cuerpo);
+  font-size: 1rem;
+  color: var(--texto);
+  background: var(--blanco);
+  transition: border-color 0.2s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--lila-primario);
+}
+
+.campo { margin-bottom: 16px; }
+
+.buscador {
+  display: flex;
+  align-items: center;
+  background-color: var(--lila-input-fondo);
+  border: 2px solid var(--lila-borde);
+  border-radius: var(--radio-pill);
+  padding: 4px 16px;
+  margin: 12px 0;
+  transition: all 0.2s ease;
+}
+
+.buscador:focus-within {
+  background-color: var(--blanco);
+  border-color: var(--lila-primario);
+  box-shadow: 0 0 6px rgba(193, 34, 240, 0.2);
+}
+
+.buscador i { color: var(--lila-primario); margin-right: 10px; }
+
+.buscador input {
+  border: none !important;
+  background: transparent !important;
+  padding: 10px 0 !important;
+  color: var(--lila-primario);
+}
+
+.buscador input:focus { color: var(--texto); }
+
+/* ---------- Tarjetas de selección (materiales) ---------- */
+.chip-material {
+  background-color: var(--blanco);
+  border: 2px solid var(--lila-borde);
+  border-radius: 20px;
+  padding: 8px 14px;
+  cursor: pointer;
+  color: var(--lila-primario);
+  display: inline-flex;
+  align-items: center;
+  font-weight: 500;
+  font-size: 0.9rem;
+  user-select: none;
+  transition: all 0.2s ease;
+}
+
+.chip-material input { display: none; }
+
+.chip-material.activo {
+  background-color: var(--lila-primario);
+  border-color: var(--lila-primario);
+  color: var(--blanco);
+}
+
+/* ---------- Badges de estado (agenda) ---------- */
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: var(--radio-pill);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+.badge-pendiente { background: var(--estado-pendiente-fondo); color: var(--estado-pendiente); }
+.badge-confirmada { background: var(--estado-confirmada-fondo); color: var(--estado-confirmada); }
+.badge-completada { background: var(--estado-completada-fondo); color: var(--estado-completada); }
+.badge-cancelada { background: var(--estado-cancelada-fondo); color: var(--estado-cancelada); }
+
+/* ---------- Tarjeta genérica ---------- */
+.tarjeta {
+  background: var(--blanco);
+  border-radius: var(--radio-m);
+  box-shadow: var(--sombra-suave);
+  padding: 20px;
+}
+
+/* ---------- Utilidades ---------- */
+.oculto { display: none !important; }
+.texto-centro { text-align: center; }
+.mensaje-vacio {
+  text-align: center;
+  color: var(--texto-tenue);
+  padding: 30px 10px;
+  font-size: 0.95rem;
+}
+.mensaje-error {
+  background: var(--peligro-fondo);
+  color: var(--peligro-texto);
+  padding: 12px 16px;
+  border-radius: var(--radio-s);
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+.mensaje-exito {
+  background: #e8f8ee;
+  color: #1e8449;
+  padding: 12px 16px;
+  border-radius: var(--radio-s);
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.contenedor-ancho {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
